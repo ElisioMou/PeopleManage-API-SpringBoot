@@ -1,4 +1,4 @@
-package one.digitalinnovation.personapi.dto.request;
+package one.digitalinnovation.peopleapi.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,7 +15,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PersonDTO {
+public class PeopleDTO {
 
     private Long id;
 
