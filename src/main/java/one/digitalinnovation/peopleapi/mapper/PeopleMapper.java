@@ -12,7 +12,7 @@ public interface PeopleMapper {
     PeopleMapper INSTANCE = Mappers.getMapper(PeopleMapper.class);
 
     @Mapping(target = "birthDate", source = "birthDate", dateFormat = "dd-MM-yyyy")
-    People toModel(PeoplenDTO peopleDTO);
+    People toModel(PeopleDTO personDTO);
 
-    PeopleDTO toDTO(People people);
+    PeopleDTO toDTO(People person);
 }

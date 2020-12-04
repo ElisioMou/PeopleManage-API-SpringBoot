@@ -1,5 +1,6 @@
-package one.digitalinnovation.personapi.dto.response;
+package one.digitalinnovation.peopleapi.dto.response;
 
+import jdk.internal.joptsimple.internal.Messages;
 import lombok.Builder;
 import lombok.Data;
 
@@ -8,4 +9,8 @@ import lombok.Data;
 public class MessageResponseDTO {
 
     private String message;
+
+    public static Messages builder() {
+        return null;
+    }
 }
