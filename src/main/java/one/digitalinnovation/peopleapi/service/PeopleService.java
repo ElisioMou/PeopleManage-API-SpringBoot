@@ -1,22 +1,21 @@
 package one.digitalinnovation.peopleapi.service;
 
+import one.digitalinnovation.peopleapi.mapper.PeopleMapper;
 import one.digitalinnovation.peopleapi.dto.request.PeopleDTO;
 import one.digitalinnovation.peopleapi.dto.response.MessageResponseDTO;
 import one.digitalinnovation.peopleapi.entity.People;
 
-import one.digitalinnovation.peopleapi.mapper.PeopleMapper;
 import one.digitalinnovation.peopleapi.repository.PeopleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Locale;
-
-import static jdk.internal.joptsimple.internal.Messages.message;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PeopleService {
 
-    private PeopleRepository peopleRepository;
+    private final PeopleRepository peopleRepository;
 
     private final PeopleMapper peopleMapper = PeopleMapper.INSTANCE;
 
@@ -30,21 +29,27 @@ public class PeopleService {
 
         People savedPeople = peopleRepository.save(peopleToSave);
 
-        /*MessageResponseDTO messageResponse = createMessageResponse("Person successfully created with ID ", savedPerson.getId());
+        MessageResponseDTO messageResponse =
+                createMessageResponse("Person successfully created with ID ", savedPeople.getId());
 
-        return messageResponse;*/
+        return messageResponse;
          /*       .firstName(peopleDTO.getFirstName())
                 .lastName(peopleDTO.getLastName())
                 .birthDate(peopleDTO.getBirthDate())
                 .phones(peopleDTO.getPhones())
                 .build();*/
 
-        private MessageResponseDTO createMessageResponse() {
             return MessageResponseDTO
                     .builder()
-                    .message()
+                    .message("Created people with ID" + savedPeople.getId())
                     .build();
-        }
+
     }
 
+    public List<PeopleDTO> lisAll() {
+        List<People> allPeople = peopleRepository.findAll();
+        return allPeople.stream()
+                .map(peopleMapper::toDTO)
+                .collect(Collectors.toList());
+    }
 }
