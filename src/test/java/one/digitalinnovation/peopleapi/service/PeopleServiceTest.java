@@ -1,6 +1,7 @@
 package one.digitalinnovation.peopleapi.service;
 
 import one.digitalinnovation.peopleapi.dto.request.PeopleDTO;
+import one.digitalinnovation.peopleapi.mapper.PeopleMapper;
 import one.digitalinnovation.peopleapi.dto.response.MessageResponseDTO;
 import one.digitalinnovation.peopleapi.entity.People;
 import one.digitalinnovation.peopleapi.repository.PeopleRepository;
@@ -10,10 +11,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
+import java.util.Locale;
+
 import static one.digitalinnovation.peopleapi.utils.PeopleUtils.createFakeDTO;
 import static one.digitalinnovation.peopleapi.utils.PeopleUtils.createFakeEntity;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class PeopleServiceTest {
@@ -39,14 +43,11 @@ public class PeopleServiceTest {
     }
 
     private MessageResponseDTO createExpectedMessageResponse(Long id) {
-    }
-
-    private MessageResponseDTO createExpectedSuccessMessageResponse(Long id) {
-        return MessageResponseDTO
+            return MessageResponseDTO
                 .builder()
-                .message("Created people with ID " + id)
+                .message(Locale.forLanguageTag("Created people with ID " + id))
                 .build();
-        }
-    }
-   
+           }
 }
+   
+
