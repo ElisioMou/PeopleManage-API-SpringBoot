@@ -43,4 +43,7 @@ public class People {
     private List<Phone> phones = new ArrayList<>();
 
 
+    public Long getId() {
+        return id;
+    }
 }
