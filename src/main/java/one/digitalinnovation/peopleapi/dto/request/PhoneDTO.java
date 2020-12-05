@@ -25,4 +25,8 @@ public class PhoneDTO {
     @NotEmpty
     @Size(min = 13, max = 14)
     private String number;
+
+    public static org.springframework.test.web.client.match.XpathRequestMatchers builder() {
+        return null;
+    }
 }

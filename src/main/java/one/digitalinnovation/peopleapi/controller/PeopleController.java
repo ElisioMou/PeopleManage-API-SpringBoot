@@ -1,5 +1,6 @@
 package one.digitalinnovation.peopleapi.controller;
 
+import lombok.AllArgsConstructor;
 import one.digitalinnovation.peopleapi.dto.request.PeopleDTO;
 import one.digitalinnovation.peopleapi.dto.response.MessageResponseDTO;
 import one.digitalinnovation.peopleapi.exception.PersonNotFoundException;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/people")
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PeopleController {
 
     private PeopleService peopleService;

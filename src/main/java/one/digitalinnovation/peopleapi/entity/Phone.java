@@ -1,5 +1,6 @@
 package one.digitalinnovation.peopleapi.entity;
 
+import jdk.jshell.Snippet;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,4 +28,7 @@ public class Phone {
     @Column(nullable = false)
     private String number;
 
+    public static Snippet builder() {
+        return null;
+    }
 }

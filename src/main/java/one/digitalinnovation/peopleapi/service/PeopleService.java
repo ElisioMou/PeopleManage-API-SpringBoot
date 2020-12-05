@@ -1,32 +1,31 @@
 package one.digitalinnovation.peopleapi.service;
 
-import one.digitalinnovation.peopleapi.exception.PersonNotFoundException;
+import lombok.AllArgsConstructor;
 import one.digitalinnovation.peopleapi.mapper.PeopleMapper;
 import one.digitalinnovation.peopleapi.dto.request.PeopleDTO;
 import one.digitalinnovation.peopleapi.dto.response.MessageResponseDTO;
 import one.digitalinnovation.peopleapi.entity.People;
-
+import one.digitalinnovation.peopleapi.exception.PersonNotFoundException;
 import one.digitalinnovation.peopleapi.repository.PeopleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PeopleService {
 
     private final PeopleRepository peopleRepository;
 
     private final PeopleMapper peopleMapper = PeopleMapper.INSTANCE;
 
-    @Autowired
     public PeopleService(PeopleRepository peopleRepository) {
         this.peopleRepository = peopleRepository;
     }
 
-    public MessageResponseDTO createPeople(PeopleDTO peopleDTO) {
+        public MessageResponseDTO createPeople(PeopleDTO peopleDTO) {
         People peopleToSave = peopleMapper.toModel(peopleDTO);
 
         People savedPeople = peopleRepository.save(peopleToSave);
@@ -68,10 +67,11 @@ public class PeopleService {
                 .orElseThrow(() -> new PersonNotFoundException(id));
     }
 
-    private MessageResponseDTO createMessageResponse(Long id, String message) {
-           return MessageResponseDTO
+    private MessageResponseDTO createMessageResponse(Long id, String m) {
+        String message = MessageResponseDTO
                 .builder()
-                .message(message + id)
+                .message(m + id)
                 .build();
+        return null;
     }
 }

@@ -10,6 +10,10 @@ public class MessageResponseDTO {
 
     private String message;
 
+    public MessageResponseDTO(String message) {
+        this.message = message;
+    }
+
     public static Messages builder() {
         return null;
     }
